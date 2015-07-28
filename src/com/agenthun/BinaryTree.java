@@ -1,10 +1,13 @@
 package com.agenthun;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by Agent Henry on 2015/7/28.
  */
 public class BinaryTree {
-    private Node root;
+    public Node root;
 
     public BinaryTree() {
         root = null;
@@ -78,6 +81,19 @@ public class BinaryTree {
 
     public void postOrder() {
         this.postOrder(this.root);
+    }
+
+    //层序遍历
+    public void layerTranverse() {
+        if (this.root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(this.root);
+        while (!q.isEmpty()) {
+            Node n = q.poll();
+            System.out.print(n.data + " ");
+            if (n.left != null) q.add(n.left);
+            if (n.right != null) q.add(n.right);
+        }
     }
 
     public static void main(String[] args) {
